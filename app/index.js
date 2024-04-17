@@ -40,7 +40,7 @@ async function run(org_Name, csv_path) {
         await getUsage(org_Name).then(metricsResult => {
             let metricsData = metricsResult.data;
 
-            console.log(`usage metrics data: ${parse(metricsData)}`);
+            console.log(`usage metrics data: ${metricsData}`);
             console.log(`json path: ${json_path}`);
 
             //TODO: check the file exists or not
@@ -48,7 +48,7 @@ async function run(org_Name, csv_path) {
             //TODO: find the delta and append to existung file
 
             // append to the existing file (or create and append if needed)
-            require("fs").appendFileSync(json_path, `${parse(metricsData)}\n`);
+            require("fs").appendFileSync(json_path, `${metricsData}\n`);
 
         });
     } catch (error) {
