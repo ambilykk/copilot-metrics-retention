@@ -43,11 +43,11 @@ async function run(org_Name, csv_path) {
             //TODO: check the file is empty or not
             //TODO: find the delta and append to existung file
 
-            console.log(`usage metrics stringify data: ${JSON.stringify(metricsData)}`);
-            let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
-            console.log(`usage metrics parsed data: ${JSON.stringify(jsonData)}`);
+           // console.log(`usage metrics stringify data: ${JSON.stringify(metricsData)}`);
+           // let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
+            console.log(`usage metrics parsed data: ${JSON.stringify(metricsData)}`);
             
-            fs.appendFileSync(json_path, JSON.stringify(jsonData)); // write the formatted JSON to a file
+            fs.appendFileSync(json_path, JSON.stringify(metricsData)); // write the formatted JSON to a file
 
         });
     } catch (error) {
