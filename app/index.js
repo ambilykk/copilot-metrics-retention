@@ -37,9 +37,6 @@ async function run(org_Name, csv_path) {
         await getUsage(org_Name).then(metricsResult => {
             let metricsData = metricsResult.data;
 
-            console.log(`usage metrics data: ${metricsData}`);
-            console.log(`json path: ${json_path}`);
-
             //TODO: check the file exists or not
             //TODO: check the file is empty or not
             //TODO: find the delta and append to existung file
@@ -47,7 +44,9 @@ async function run(org_Name, csv_path) {
             // append to the existing file (or create and append if needed)
         
             let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
-            fs.appendFileSync(json_path, JSON.stringify(jsonData, null, 2)); // write the formatted JSON to a file
+            console.log(`usage metrics data: ${JSON.stringify(jsonData)}`);
+            
+            fs.appendFileSync(json_path, JSON.stringify(jsonData)); // write the formatted JSON to a file
 
         });
     } catch (error) {
