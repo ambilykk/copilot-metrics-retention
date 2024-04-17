@@ -1,10 +1,7 @@
 // libs for github & graphql
 const core = require('@actions/core');
 const github = require('@actions/github');
-
-// libs for csv file creation
-const { dirname } = require("path");
-const makeDir = require("make-dir");
+const fs = require("fs");
 
 // get the octokit handle 
 const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
@@ -48,7 +45,9 @@ async function run(org_Name, csv_path) {
             //TODO: find the delta and append to existung file
 
             // append to the existing file (or create and append if needed)
-            require("fs").appendFileSync(json_path, `${metricsData}\n`);
+        
+            let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
+            fs.appendFileSync(json_path, JSON.stringify(jsonData, null, 2)); // write the formatted JSON to a file
 
         });
     } catch (error) {
