@@ -35,16 +35,17 @@ async function run(org_Name, csv_path) {
     try {
 
         await getUsage(org_Name).then(metricsResult => {
+            console.log(`usage metrics result: ${JSON.stringify(metricsResult)}`);
+
             let metricsData = metricsResult.data;
 
             //TODO: check the file exists or not
             //TODO: check the file is empty or not
             //TODO: find the delta and append to existung file
 
-            // append to the existing file (or create and append if needed)
-        
+            console.log(`usage metrics stringify data: ${JSON.stringify(metricsData)}`);
             let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
-            console.log(`usage metrics data: ${JSON.stringify(jsonData)}`);
+            console.log(`usage metrics parsed data: ${JSON.stringify(jsonData)}`);
             
             fs.appendFileSync(json_path, JSON.stringify(jsonData)); // write the formatted JSON to a file
 
