@@ -1,0 +1,31 @@
+{
+  "name": "copilot-metrics-retention",
+  "version": "1.0.0",
+  "description": "The Copilot Usage Metrics API supplies data spanning a 28-day timeframe. This Action is designed to persistently store this data over time in a JSON file format.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/octodemo/copilot-metrics-retention.git"
+  },
+  "keywords": [
+    "copilot",
+    "usage.",
+    "metrics",
+    "retention"
+  ],
+  "author": "@ambilykk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octodemo/copilot-metrics-retention/issues"
+  },
+  "homepage": "https://github.com/octodemo/copilot-metrics-retention#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "make-dir": "^4.0.0",
+    "path": "^0.12.7"
+  }
+}

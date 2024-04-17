@@ -1,0 +1,19 @@
+name: 'Copilot Metrics Retention'
+description: 'The Copilot Usage Metrics API supplies data spanning a 28-day timeframe. This Action is designed to persistently store this data over time in a JSON file format.'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: true
+  org_name: 
+    description: 'Organization name'
+    required: true
+  json_path:
+    description: 'JSON File path'
+    required: false
+    default: 'metrics.json'
+runs:
+  using: 'node16'
+  main: 'app/index.js'

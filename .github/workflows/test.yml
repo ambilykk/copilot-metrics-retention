@@ -1,0 +1,27 @@
+name: Copilot Metrics Retention
+
+on:
+  workflow_dispatch:
+      inputs:
+          org_name: 
+            description: 'Organization name'
+            required: true
+            default: 'octodemo'
+          json_path:
+            description: 'JSON File path'
+            required: true
+            default: 'metrics.json'
+         
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Copilot Metrics Retention 
+        uses: octodemo/copilot-metrics-retention@main
+        with:        
+          GITHUB_TOKEN: ${{ secrets.ORG_TOKEN }}
+          org_name: ${{ inputs.org_name }} 
+          csv_path: ${{ inputs.csv_path }} 
+    
+      
