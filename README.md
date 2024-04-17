@@ -9,7 +9,8 @@ Create a Fine-grained personal access tokens with
        
   - **Resource owner** as Organization
   - **read & write** access to **GitHub Copilot for Business** under _Organization permissions_
-        ![Screenshot 2023-08-01 at 4 09 43 PM](https://github.com/ambilykk/copilot-usage-report/assets/10282550/543d34a0-c0ab-40c7-a192-a2b7ab0fcd7c)
+        ![gh image](https://github.com/octodemo/copilot-metrics-retention/assets/10282550/a9f8750a-ee61-467a-b7d7-059fc16b9ab7)
+
 
 Pass this token as an input to the action - GITHUB_TOKEN
 
