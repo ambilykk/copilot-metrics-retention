@@ -35,8 +35,6 @@ async function run(org_Name, csv_path) {
     try {
 
         await getUsage(org_Name).then(metricsResult => {
-            console.log(`usage metrics result: ${JSON.stringify(metricsResult)}`);
-
             let metricsData = metricsResult.data;
 
             //TODO: check the file exists or not 
@@ -52,7 +50,7 @@ async function run(org_Name, csv_path) {
             // append the entire data to the file
             if (data.trim() === '[]') {
                 console.log("The JSON data array is empty.");
-                fs.writeFileSync(json_path, JSON.stringify(metricsData));
+                fs.writeFileSync(json_path, JSON.stringify(metricsData, null, 2));
             } else {
                //TODO: find the delta and append to existung file
                 let jsonData = JSON.parse(data); // parse the JSON data into a JavaScript array
@@ -66,6 +64,12 @@ async function run(org_Name, csv_path) {
                     // remove the nodes from metricsData that are older than the last node in the JSON data array
                     metricsData = metricsData.filter(node => new Date(node.day) > lastDate);
                     console.log(JSON.stringify(metricsData));
+
+                    // append the metricsData to the file if there are any new nodes
+                    if (metricsData.length > 0) {
+                        jsonData = jsonData.concat(metricsData);
+                        fs.writeFileSync(json_path, JSON.stringify(jsonData, null, 2));
+                    }
 
                 } else {
                     console.log("The JSON data array is empty.");
