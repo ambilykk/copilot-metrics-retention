@@ -42,7 +42,7 @@ async function run(org_Name, csv_path) {
             //TODO: check the file exists or not 
             if (!fs.existsSync(json_path)) {
                 // The file doesn't exist, create a new one with an empty JSON object
-                fs.writeFileSync(json_path, JSON.stringify('', null, 2));
+                fs.writeFileSync(json_path, JSON.stringify([], null, 2));
             }
             
             //TODO: check the file is empty or not
@@ -50,10 +50,20 @@ async function run(org_Name, csv_path) {
 
             // file contains only [] indicating a blank file
             // append the entire data to the file
-            if (data.trim() === '' || data.trim() === '{}') {
-                fs.appendFileSync(json_path, JSON.stringify(metricsData));
+            if (data.trim() === '[]') {
+                console.log("The JSON data array is empty.");
+                fs.writeFileSync(json_path, JSON.stringify(metricsData));
             } else {
                //TODO: find the delta and append to existung file
+                let jsonData = JSON.parse(data); // parse the JSON data into a JavaScript array
+
+                if (jsonData.length > 0) {
+                    let lastNode = jsonData[jsonData.length - 1]; // get the last node
+                    console.log(lastNode);
+                } else {
+                    console.log("The JSON data array is empty.");
+                }
+
             }
 
         });
