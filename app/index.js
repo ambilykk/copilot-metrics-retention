@@ -17,7 +17,7 @@ const json_path = core.getInput('json_path');
 let totalSeats = 0;
 
 // Copilot Usage Metrics API call
-async function getUsage(org, pageNo) {
+async function getUsage(org) {
     try {
 
         return await octokit.request('GET /orgs/{org}/copilot/usage', {
@@ -37,7 +37,7 @@ async function run(org_Name, csv_path) {
 
     try {
 
-        await getUsage(org_Name, pageNo).then(metricsResult => {
+        await getUsage(org_Name).then(metricsResult => {
             let metricsData = metricsResult.data;
 
             console.log(`usage metrics data: ${parse(metricsData)}`);
