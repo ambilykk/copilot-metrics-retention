@@ -25,6 +25,6 @@ jobs:
         with:        
           GITHUB_TOKEN: ${{ secrets.ORG_TOKEN }}
           org_name: ${{ inputs.org_name }} 
-          csv_path: ${{ inputs.csv_path }} 
+          json_path: ${{ inputs.json_path }} 
     
       
