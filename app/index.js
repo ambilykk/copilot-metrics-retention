@@ -39,15 +39,22 @@ async function run(org_Name, csv_path) {
 
             let metricsData = metricsResult.data;
 
-            //TODO: check the file exists or not
-            //TODO: check the file is empty or not
-            //TODO: find the delta and append to existung file
-
-           // console.log(`usage metrics stringify data: ${JSON.stringify(metricsData)}`);
-           // let jsonData = JSON.parse(metricsData); // parse the JSON string to a JavaScript object
-            console.log(`usage metrics parsed data: ${JSON.stringify(metricsData)}`);
+            //TODO: check the file exists or not 
+            if (!fs.existsSync(json_path)) {
+                // The file doesn't exist, create a new one with an empty JSON object
+                fs.writeFileSync(json_path, JSON.stringify('', null, 2));
+            }
             
-            fs.appendFileSync(json_path, JSON.stringify(metricsData)); // write the formatted JSON to a file
+            //TODO: check the file is empty or not
+            let data = fs.readFileSync(json_path, 'utf8'); // read the file
+
+            // file contains only [] indicating a blank file
+            // append the entire data to the file
+            if (data.trim() === '' || data.trim() === '{}') {
+                fs.appendFileSync(json_path, JSON.stringify(metricsData));
+            } else {
+               //TODO: find the delta and append to existung file
+            }
 
         });
     } catch (error) {
