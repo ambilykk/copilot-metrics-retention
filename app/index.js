@@ -2,6 +2,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require("fs");
+const { dirname } = require("path");
+const makeDir = require("make-dir");
 
 // get the octokit handle 
 const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
@@ -33,18 +35,10 @@ async function getUsage(org) {
 async function run(org_Name, csv_path) {
 
     try {
+        await makeDir(dirname(csv_path));
 
         await getUsage(org_Name).then(metricsResult => {
             let metricsData = metricsResult.data;
-
-            // extract the directory from json_path
-            let directory = json_path.substring(0, json_path.lastIndexOf("/"));
-
-            // check the directory exists or not
-            if (!fs.existsSync(directory)) {
-                // The directory doesn't exist, create the directory and subdirectories
-                fs.mkdirSync(directory, { recursive: true });
-            }
 
             //check the file exists or not 
             if (!fs.existsSync(json_path)) {
