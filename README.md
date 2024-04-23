@@ -74,8 +74,6 @@ Sample workflow file:
 | org_name                       | Yes | GitHub Organization Name                                      |
 | json_path                       | Yes | JSON file path to store the Copilot Metrics dtaa in repository                          |
 
-> ** Directory creation is not supported in this version. Action will generate the JSON file in the root directory of the repository
-
 
 
 # License

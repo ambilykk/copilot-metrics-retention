@@ -37,13 +37,22 @@ async function run(org_Name, csv_path) {
         await getUsage(org_Name).then(metricsResult => {
             let metricsData = metricsResult.data;
 
-            //TODO: check the file exists or not 
+            // extract the directory from json_path
+            let directory = json_path.substring(0, json_path.lastIndexOf("/"));
+
+            // check the directory exists or not
+            if (!fs.existsSync(directory)) {
+                // The directory doesn't exist, create the directory and subdirectories
+                fs.mkdirSync(directory, { recursive: true });
+            }
+
+            //check the file exists or not 
             if (!fs.existsSync(json_path)) {
                 // The file doesn't exist, create a new one with an empty JSON object
                 fs.writeFileSync(json_path, JSON.stringify([], null, 2));
             }
             
-            //TODO: check the file is empty or not
+            //check the file is empty or not
             let data = fs.readFileSync(json_path, 'utf8'); // read the file
 
             // file contains only [] indicating a blank file
