@@ -50,7 +50,7 @@ Sample workflow file:
         uses: actions/checkout@v4
 
       - name: Copilot Metrics Retention 
-        uses: octodemo/copilot-metrics-retention@main
+        uses: ambilykk/copilot-metrics-retention@main
         with:        
           GITHUB_TOKEN: ${{ secrets.ORG_TOKEN }}
           org_name: ${{ inputs.org_name }} 
