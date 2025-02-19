@@ -1,11 +1,10 @@
 # Copilot Metrics Retention
-The Copilot Usage Metrics API supplies data spanning a 28-day timeframe. This Action is designed to persistently store this data over time in a JSON file format. This Action generates the Copilot Usage Metrics data in a JSON file format and stores it in the repository. Each time the Action is executed, the JSON file is refreshed to incorporate the delta data retrieved from the API.
+The Copilot Metrics API supplies data spanning a 28-day timeframe. This Action is designed to persistently store this data over time in a JSON file format. This Action generates the Copilot Metrics data in a JSON file format and stores it in the repository. Each time the Action is executed, the JSON file is refreshed to incorporate the delta data retrieved from the API.
 
 Note: 
-- The Copilot Metrics API is in Beta and subject to change.
 - The Copilot Metrics API is available for GitHub Copilot for Business customers only.
 - Copilot Metrics Retention Action is designed to work with Copilot Metrics API for Organizations only.
-- API Documentation https://docs.github.com/en/rest/copilot/copilot-usage?apiVersion=2022-11-28#get-a-summary-of-copilot-usage-for-organization-members
+- API Documentation https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28
 
 
 
@@ -20,7 +19,7 @@ Create a Fine-grained personal access tokens with
 Pass this token as an input to the action - GITHUB_TOKEN
 
 
-## Usage in workflow
+## Matrics in workflow
 
 Incorporate the **copilot-metrics-retention** action into your workflow and initiate the workflow either manually or through a schedule. 
 
