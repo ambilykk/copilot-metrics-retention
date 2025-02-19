@@ -15,11 +15,11 @@ const json_path = core.getInput('json_path');
 
 let totalSeats = 0;
 
-// Copilot Usage Metrics API call
+// Copilot Metrics API call
 async function getUsage(org) {
     try {
 
-        return await octokit.request('GET /orgs/{org}/copilot/usage', {
+        return await octokit.request('GET /orgs/{org}/copilot/metrics', {
             org: org_Name,
             headers: {
                 'X-GitHub-Api-Version': '2022-11-28'
