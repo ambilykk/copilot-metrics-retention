@@ -61,11 +61,11 @@ async function run(org_Name, csv_path) {
                 if (jsonData.length > 0) {
                     let lastNode = jsonData[jsonData.length - 1]; // get the last node
                     console.log(lastNode);
-                    let lastDate = new Date(lastNode.day); // get the date of the last node
+                    let lastDate = new Date(lastNode.date); // get the date of the last node
                     console.log(lastDate);
 
                     // remove the nodes from metricsData that are older than the last node in the JSON data array
-                    metricsData = metricsData.filter(node => new Date(node.day) > lastDate);
+                    metricsData = metricsData.filter(node => new Date(node.date) > lastDate);
                     console.log(JSON.stringify(metricsData));
 
                     // append the metricsData to the file if there are any new nodes
