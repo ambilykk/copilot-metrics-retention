@@ -19,7 +19,7 @@ Create a Fine-grained personal access tokens with
 Pass this token as an input to the action - GITHUB_TOKEN
 
 
-## Matrics in workflow
+## Metrics in workflow
 
 Incorporate the **copilot-metrics-retention** action into your workflow and initiate the workflow either manually or through a schedule. 
 
